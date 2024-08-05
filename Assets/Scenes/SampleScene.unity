@@ -709,6 +709,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1972698572897933617, guid: d20a54e95c64b7e46b25dea0f09f79ce, type: 3}
+      propertyPath: m_Radius
+      value: 21.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972698572897933617, guid: d20a54e95c64b7e46b25dea0f09f79ce, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2950740641361824532, guid: d20a54e95c64b7e46b25dea0f09f79ce, type: 3}
       propertyPath: m_Name
       value: Globulo Bianco
@@ -810,6 +818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2005574109341731186, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3834355533809554695, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -888,6 +900,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4456717771690022289, guid: ef8964f8377203e4fa413f2c55d1d60d, type: 3}
+      propertyPath: m_Name
+      value: SpawnPos
+      objectReference: {fileID: 0}
     - target: {fileID: 5734335008511520784, guid: ef8964f8377203e4fa413f2c55d1d60d, type: 3}
       propertyPath: m_Name
       value: Spawner

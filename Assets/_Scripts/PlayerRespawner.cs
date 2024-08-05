@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Spawner : MonoBehaviour
+public class PlayerRespawner : MonoBehaviour
 {
 
     public float respawnTimer = 2f;

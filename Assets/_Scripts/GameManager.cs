@@ -22,5 +22,7 @@ using UnityEngine;
         DontDestroyOnLoad(this);
         inputActions = new InputSystem_Actions();
         inputActions.Enable();
+
+        
     }
 }

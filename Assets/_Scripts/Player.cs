@@ -13,6 +13,8 @@ namespace Assets._Scripts {
 
         private void OnCollisionEnter(Collision collision) {
             if (collision.gameObject.TryGetComponent(out GlobuloBiancoMovement g)) {
+
+                //logica morte
                 gameObject.SetActive(false);
                 onDeath.Invoke();
             }
@@ -22,6 +24,8 @@ namespace Assets._Scripts {
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.TryGetComponent(out Organo organo)) {
                 print("INFEZIONE");
+
+                //logica infezione / eventi
                 gameObject.SetActive(false);
                 onInfezione.Invoke();
 
