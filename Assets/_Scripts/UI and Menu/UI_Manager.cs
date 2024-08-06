@@ -7,8 +7,7 @@ public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager instance;
 
-    public int infectedCells;
-    public int whiteCellsKilled;
+    public int infectedCells = 666;
 
     public bool isPaused = false;
 
@@ -32,19 +31,33 @@ public class UI_Manager : MonoBehaviour
 
     private void Start()
     {
+        //infectedCells = GameManager.instance ? GameManager.instance.infectedCells : 0;
+
         SetMenuActive(mainMenu);
     }
 
-    private void SetMenuActive(GameObject _menu)
+    public void StartGame()
+    {
+        //Time.timeScale = 1.0f;
+
+        SetMenuOff(mainMenu);
+        SetMenuActive(gameUI);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void SetMenuActive(GameObject _menu)
     {
         _menu.SetActive(true);
     }
 
-    private void SetMenuOff(GameObject _menu)
+    public void SetMenuOff(GameObject _menu)
     {
         _menu.SetActive(false);
     }
-
 
     public void TogglePause()
     {
@@ -63,5 +76,4 @@ public class UI_Manager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
-
 }

@@ -2,36 +2,38 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.TextCore.Text;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 
-    private TextMeshPro gameTitle;
-    private TextMeshPro infectedCellsText;
+    public TMP_Text gameTitle;
+    public TMP_Text infectedCellsText;
 
-    private int infectedCells = 0;
+    private void Awake()
+    {
+        gameTitle.text = $"infectous";
+    }
 
     void Start()
     {
-        gameTitle.text = $"GAME TITLE";
-
         MainMenuInit();
-    }
-
-    private void MainMenuInit()
-    {
-        //infectedCells = GameManager.Instance ? GameManager.Instance.totalInfectedCells : 0;
-        infectedCellsText.text = $"INFECTED CELLS = {infectedCells.ToString()}";
     }
 
     void Update()
     {
 
     }
+
     private void OnEnable()
     {
         MainMenuInit();
+    }
 
+    private void MainMenuInit()
+    {
+        infectedCellsText.text = $"infected cells\n{UI_Manager.instance.infectedCells.ToString()}";
     }
 }
 
