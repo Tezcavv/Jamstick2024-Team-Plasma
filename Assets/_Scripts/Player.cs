@@ -11,6 +11,11 @@ namespace Assets._Scripts {
         public UnityEvent onRespawn;
 
 
+
+        private void OnEnable() {
+            GameManager.Instance.ActivePlayer = this;
+        }
+
         private void OnCollisionEnter(Collision collision) {
             if (collision.gameObject.TryGetComponent(out GlobuloBiancoMovement g)) {
 
