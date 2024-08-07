@@ -33,7 +33,7 @@ public class UI_Manager : MonoBehaviour
     {
         //infectedCells = GameManager.instance ? GameManager.instance.infectedCells : 0;
 
-        SetMenuActive(mainMenu);
+        //SetMenuActive(mainMenu);
     }
 
     public void StartGame()
@@ -49,14 +49,17 @@ public class UI_Manager : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetMenuActive(GameObject _menu)
+    public void ResumeGame()
     {
-        _menu.SetActive(true);
+        TogglePause();
     }
 
-    public void SetMenuOff(GameObject _menu)
+    public void BackToMain()
     {
-        _menu.SetActive(false);
+        TogglePause();
+
+        SetMenuOff(gameUI);
+        SetMenuActive(mainMenu);
     }
 
     public void TogglePause()
@@ -74,6 +77,24 @@ public class UI_Manager : MonoBehaviour
             SetMenuOff(pauseMenu);
 
             Time.timeScale = 1;
+        }
+    }
+
+    public void SetMenuActive(GameObject _menu)
+    {
+        _menu.SetActive(true);
+    }
+
+    public void SetMenuOff(GameObject _menu)
+    {
+        _menu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.activeInHierarchy == false)
+        {
+            TogglePause();
         }
     }
 }
