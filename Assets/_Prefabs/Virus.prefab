@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerParams: {fileID: 11400000, guid: 2fc6120bf0c672d45a940d2e02e25c51, type: 2}
-  rb: {fileID: 3204429265120707813}
+  Controller: {fileID: 6657266621949808744}
+  RotationSmoothTime: 0.12
 --- !u!114 &4978770560015556949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966e6dce01583ca418b05fa8b1b1d0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CinemachineCameraTarget: {fileID: 2005574109341731186}
+  CinemachineCameraTarget: {fileID: 2408724691630803195}
   CameraAngleOverride: 0
   TopClamp: 20
   BottomClamp: -40
@@ -303,8 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884518416042120001}
-  - component: {fileID: 3204429265120707813}
-  - component: {fileID: 7394004744365916953}
+  - component: {fileID: 6657266621949808744}
   m_Layer: 0
   m_Name: Virus
   m_TagString: Player
@@ -331,41 +331,14 @@ Transform:
   - {fileID: 3616176770647861870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &3204429265120707813
-Rigidbody:
+--- !u!143 &6657266621949808744
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005574109341731186}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 1
---- !u!136 &7394004744365916953
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005574109341731186}
-  m_Material: {fileID: 13400000, guid: 5a71e728822716f4d92f8f066c6f3df9, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -373,14 +346,16 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.67
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  serializedVersion: 3
+  m_Height: 2.16
+  m_Radius: 0.53
+  m_SlopeLimit: 45
+  m_StepOffset: 0.25
+  m_SkinWidth: 0.02
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!1 &2408724691630803195
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7804570019979285072}
+  - component: {fileID: 9221737953275480098}
   m_Layer: 0
   m_Name: VirusBrain
   m_TagString: Untagged
@@ -443,6 +419,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 884518416042120001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9221737953275480098
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850546838455770090}
+  m_Material: {fileID: 13400000, guid: 5a71e728822716f4d92f8f066c6f3df9, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.67
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3647911816050279402
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 4081098969006418839}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -9}
+  m_LocalPosition: {x: -1, y: 4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -582,7 +581,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 884518416042120001}
+  m_Follow: {fileID: 3616176770647861870}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
