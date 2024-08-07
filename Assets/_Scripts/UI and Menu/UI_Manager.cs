@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.TextCore.Text;
 
+[DefaultExecutionOrder(-99)]
+
 public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager instance;
