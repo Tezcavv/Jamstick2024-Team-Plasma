@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.TextCore.Text;
+using UnityEngine.InputSystem;
+using System;
 
 [DefaultExecutionOrder(-99)]
 
@@ -17,6 +19,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject gameUI;
     public GameObject pauseMenu;
 
+    InputAction pauseAction;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -28,6 +32,15 @@ public class UI_Manager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+        }
+
+        pauseAction = GameManager.Instance.inputActions.UI.Pause;
+        pauseAction.started += PauseGame;
+    }
+
+    private void PauseGame(InputAction.CallbackContext context) {
+        if(!mainMenu.activeInHierarchy ) {
+            TogglePause();
         }
     }
 
@@ -92,11 +105,11 @@ public class UI_Manager : MonoBehaviour
         _menu.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.activeInHierarchy == false)
-        {
-            TogglePause();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.activeInHierarchy == false)
+    //    {
+    //        TogglePause();
+    //    }
+    //}
 }
