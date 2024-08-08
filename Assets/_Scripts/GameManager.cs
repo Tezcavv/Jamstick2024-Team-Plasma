@@ -36,6 +36,7 @@ using UnityEngine.Events;
         DontDestroyOnLoad(this);
         inputActions = new InputSystem_Actions();
         inputActions.Enable();
+      //  Cursor.lockState = CursorLockMode.Locked;
 
     }
 

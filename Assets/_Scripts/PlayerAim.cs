@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -20,16 +21,34 @@ public class PlayerAim : MonoBehaviour {
     private const float _threshold = 0.01f;
 
     InputAction aimAction;
+    InputAction shootAction;
     float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
 
     private void Awake() {
         
         aimAction = GameManager.Instance.inputActions.Player.Look;
+        shootAction = GameManager.Instance.inputActions.Player.Attack;
         _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+
+       
     }
 
+    private void OnEnable() {
+        shootAction.started += CheckForPlayer;
+    }
 
+    private void CheckForPlayer(InputAction.CallbackContext context) {
+        Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, CinemachineCameraTarget.transform.position.z ));
+
+        RaycastHit[] hit = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, 50f, LayerMask.GetMask("Virus"));
+        foreach(RaycastHit hit1 in hit) {
+            //if(hit1.collider.gameObject.TryGetComponent<VirusMovement>(out VirusMovement p))
+
+        }
+           
+        
+    }
 
     private void LateUpdate() {
         CameraRotation();
@@ -60,5 +79,8 @@ public class PlayerAim : MonoBehaviour {
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
+    private void OnDisable() {
 
+        shootAction.started -= CheckForPlayer;
+    }
 }
