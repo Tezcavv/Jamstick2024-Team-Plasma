@@ -6,8 +6,14 @@ public class VolumeSettings : MonoBehaviour
 {
     public AudioMixer VolumesMixer;
     //public Slider masterSlider;
+
     public Slider musicSlider;
+    public Slider musicSlider2;
+    public float musicVolume;
+
     public Slider SFXSlider;
+    public Slider SFXSlider2;
+    public float SFXVolume;
 
     public const string MIXER_MASTER = "MasterVolume";
     public const string MIXER_MUSIC = "MusicVolume";
@@ -16,9 +22,38 @@ public class VolumeSettings : MonoBehaviour
     private void Awake()
     {
         //masterSlider.onValueChanged.AddListener(SetMasterVolume);
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        SFXSlider.onValueChanged.AddListener(SetSFXVolume);
 
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        SFXSlider.onValueChanged.AddListener(SetSFXVolume); 
+        musicSlider2.onValueChanged.AddListener(SetMusicVolume);
+        SFXSlider2.onValueChanged.AddListener(SetSFXVolume);
+
+        musicVolume = musicSlider.value;
+        SFXVolume = SFXSlider.value;
+    }
+
+
+    public void SetSFXVolume(float value)
+    {
+        SFXVolume = value;
+        SFXSlider.value = musicVolume;
+        SFXSlider2.value = musicVolume;
+
+        VolumesMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        musicVolume = value;
+        musicSlider.value = musicVolume;
+        musicSlider2.value = musicVolume;
+
+        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+
+    public void SetMasterVolume(float value)
+    {
+        VolumesMixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
     }
 
     void Start()
@@ -30,23 +65,9 @@ public class VolumeSettings : MonoBehaviour
 
     void OnDisable()
     {
-        SavePrefsToAudioManager();
+        //SavePrefsToAudioManager();
     }
 
-    public void SetSFXVolume(float value)
-    {
-        VolumesMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
-    }
-
-    public void SetMusicVolume(float value)
-    {
-        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
-    }
-
-    public void SetMasterVolume(float value)
-    {
-        VolumesMixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
-    }
     public void SavePrefsToAudioManager()
     {
         //PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);

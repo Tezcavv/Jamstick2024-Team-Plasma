@@ -18,6 +18,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject gameUI;
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
+
 
     InputAction pauseAction;
 
@@ -38,11 +40,6 @@ public class UI_Manager : MonoBehaviour
         pauseAction.started += PauseGame;
     }
 
-    private void PauseGame(InputAction.CallbackContext context) {
-        if(!mainMenu.activeInHierarchy ) {
-            TogglePause();
-        }
-    }
 
     private void Start()
     {
@@ -53,8 +50,6 @@ public class UI_Manager : MonoBehaviour
 
     public void StartGame()
     {
-        //Time.timeScale = 1.0f;
-
         SetMenuOff(mainMenu);
         SetMenuActive(gameUI);
     }
@@ -62,6 +57,22 @@ public class UI_Manager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PauseGame(InputAction.CallbackContext context) {
+        if(!mainMenu.activeInHierarchy ) {
+            TogglePause();
+        }
+    }
+
+    public void OpenOptions()
+    {
+        SetMenuActive(optionsMenu);
+    }
+
+    public void CloseOptions()
+    {
+        SetMenuOff(optionsMenu);
     }
 
     public void ResumeGame()
@@ -104,12 +115,4 @@ public class UI_Manager : MonoBehaviour
     {
         _menu.SetActive(false);
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape) && mainMenu.activeInHierarchy == false)
-    //    {
-    //        TogglePause();
-    //    }
-    //}
 }
