@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.TextCore.Text;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.Events;
 
 [DefaultExecutionOrder(-99)]
 
@@ -22,6 +23,9 @@ public class UI_Manager : MonoBehaviour
 
 
     InputAction pauseAction;
+
+    public UnityEvent onPause;
+    public UnityEvent onResume;
 
     private void Awake()
     {
@@ -62,6 +66,7 @@ public class UI_Manager : MonoBehaviour
     public void PauseGame(InputAction.CallbackContext context) {
         if(!mainMenu.activeInHierarchy ) {
             TogglePause();
+            onPause?.Invoke();
         }
     }
 
@@ -78,6 +83,7 @@ public class UI_Manager : MonoBehaviour
     public void ResumeGame()
     {
         TogglePause();
+        onResume?.Invoke();
     }
 
     public void BackToMain()
