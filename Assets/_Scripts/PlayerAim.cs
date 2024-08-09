@@ -25,6 +25,8 @@ public class PlayerAim : MonoBehaviour {
     InputAction shootAction;
     float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
+    public PlayerParams playerParams;
+    
 
     private void Awake() {
         
@@ -42,7 +44,7 @@ public class PlayerAim : MonoBehaviour {
     private void CheckForPlayer(InputAction.CallbackContext context) {
         Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, CinemachineCameraTarget.transform.position.z ));
 
-        RaycastHit[] hits = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, 50f, LayerMask.GetMask("VirusBrain"));
+        RaycastHit[] hits = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, playerParams.BoxCastRange, LayerMask.GetMask("VirusBrain"));
 
         if (hits.Length == 0)
             return;

@@ -197,6 +197,7 @@ MonoBehaviour:
   TopClamp: 20
   BottomClamp: -40
   LockCameraPosition: 0
+  playerParams: {fileID: 11400000, guid: 2fc6120bf0c672d45a940d2e02e25c51, type: 2}
 --- !u!1 &1697807205353599195
 GameObject:
   m_ObjectHideFlags: 0
