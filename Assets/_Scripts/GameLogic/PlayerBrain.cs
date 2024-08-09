@@ -32,6 +32,7 @@ public class PlayerBrain : MonoBehaviour {
             //logica infezione / eventi
             gameObject.SetActive(false);
             onInfezione.Invoke();
+            FindAnyObjectByType<PlayerRespawner>().SpawnPlayer();
 
         }
     }
@@ -39,5 +40,6 @@ public class PlayerBrain : MonoBehaviour {
     public void BecomeVirus() {
         gameObject.SetActive(false);
         virusBrain.gameObject.SetActive(true);
+        GetComponentInParent<CharacterController>().enabled = false;
     }
 }

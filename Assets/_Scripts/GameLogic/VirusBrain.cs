@@ -11,6 +11,7 @@ public class VirusBrain : MonoBehaviour {
         GameManager.Instance.ActivePlayer = player;
         player.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        GetComponentInParent<CharacterController>().enabled = true;
     }
 
 

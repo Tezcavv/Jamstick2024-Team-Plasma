@@ -10,6 +10,7 @@ public class VirusManager : MonoBehaviour
     private void Awake() {
         virusBrain = GetComponentInChildren<VirusBrain>(true);
         playerBrain = GetComponentInChildren<PlayerBrain>(true);
+
     }
 
     private void Start() {

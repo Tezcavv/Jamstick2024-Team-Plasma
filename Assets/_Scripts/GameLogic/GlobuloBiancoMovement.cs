@@ -19,7 +19,7 @@ public class GlobuloBiancoMovement : MonoBehaviour {
         Collider[] result = Physics.OverlapSphere(transform.position, attackRange.radius);
         foreach (var item in result)
         {
-            if (item.CompareTag("Player")) {
+            if (item.CompareTag("Player") && item.GetComponentInChildren<PlayerBrain>(false)!=null) {
                 Vector3 movement = (player.transform.position - rb.transform.position).normalized;
                 rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z) * gParams.movementSpeed;
             }

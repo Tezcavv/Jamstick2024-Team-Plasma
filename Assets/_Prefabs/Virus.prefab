@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerParams: {fileID: 11400000, guid: 2fc6120bf0c672d45a940d2e02e25c51, type: 2}
-  Controller: {fileID: 6657266621949808744}
+  Controller: {fileID: 4841815149342316980}
   RotationSmoothTime: 0.12
 --- !u!114 &4978770560015556949
 MonoBehaviour:
@@ -282,8 +282,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884518416042120001}
-  - component: {fileID: 6657266621949808744}
   - component: {fileID: 5632577274641993906}
+  - component: {fileID: 4841815149342316980}
   m_Layer: 0
   m_Name: Virus
   m_TagString: Player
@@ -310,7 +310,21 @@ Transform:
   - {fileID: 3616176770647861870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &6657266621949808744
+--- !u!114 &5632577274641993906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005574109341731186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da985d8b575733a4caf09e68feedd0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusBrain: {fileID: 6627675610214065343}
+  playerBrain: {fileID: 2485675636545378202}
+--- !u!143 &4841815149342316980
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,20 +349,6 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.89, z: 0}
---- !u!114 &5632577274641993906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005574109341731186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da985d8b575733a4caf09e68feedd0b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  virusBrain: {fileID: 6627675610214065343}
-  playerBrain: {fileID: 2485675636545378202}
 --- !u!1 &2408724691630803195
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +391,8 @@ GameObject:
   - component: {fileID: 7804570019979285072}
   - component: {fileID: 9221737953275480098}
   - component: {fileID: 6627675610214065343}
+  - component: {fileID: 1281883659768812906}
+  - component: {fileID: 6331475158763809120}
   m_Layer: 3
   m_Name: VirusBrain
   m_TagString: Untagged
@@ -449,6 +451,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2485675636545378202}
+--- !u!114 &1281883659768812906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850546838455770090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8176f1317571df847bc5a9eb1fc34e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusParams: {fileID: 11400000, guid: 27e345488ada3654eac7e4cab0279868, type: 2}
+--- !u!54 &6331475158763809120
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850546838455770090}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3647911816050279402
 GameObject:
   m_ObjectHideFlags: 0
