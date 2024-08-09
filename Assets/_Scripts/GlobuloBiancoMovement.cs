@@ -13,7 +13,6 @@ public class GlobuloBiancoMovement : MonoBehaviour {
     private void Awake() {
         player = FindAnyObjectByType<PlayerMovement>();
         rb = GetComponent<Rigidbody>();
-        
     }
 
     private void FixedUpdate() {
