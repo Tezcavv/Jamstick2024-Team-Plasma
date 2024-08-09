@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -41,11 +42,15 @@ public class PlayerAim : MonoBehaviour {
     private void CheckForPlayer(InputAction.CallbackContext context) {
         Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, CinemachineCameraTarget.transform.position.z ));
 
-        RaycastHit[] hit = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, 50f, LayerMask.GetMask("Virus"));
-        foreach(RaycastHit hit1 in hit) {
-            //if(hit1.collider.gameObject.TryGetComponent<VirusMovement>(out VirusMovement p))
+        RaycastHit[] hits = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, 50f, LayerMask.GetMask("VirusBrain"));
 
-        }
+        if (hits.Length == 0)
+            return;
+        GameObject virus = hits.OrderBy(hit => hit.distance).First().collider.gameObject;
+        virus.GetComponent<VirusBrain>().BecomePlayer();
+
+        //disattivo il Playerbrain
+        GetComponent<PlayerBrain>().BecomeVirus();
            
         
     }
