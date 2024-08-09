@@ -56,6 +56,7 @@ public class UI_Manager : MonoBehaviour
     {
         SetMenuOff(mainMenu);
         SetMenuActive(gameUI);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitGame()
