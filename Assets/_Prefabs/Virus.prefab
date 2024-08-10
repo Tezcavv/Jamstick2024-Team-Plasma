@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4978770560015556949}
   - component: {fileID: 2485675636545378202}
   - component: {fileID: 5796850033680625767}
+  - component: {fileID: 8398855541088726915}
+  - component: {fileID: 8289956397352328668}
   m_Layer: 0
   m_Name: PlayerBrain
   m_TagString: Untagged
@@ -198,6 +200,56 @@ MonoBehaviour:
   BottomClamp: -40
   LockCameraPosition: 0
   playerParams: {fileID: 11400000, guid: 2fc6120bf0c672d45a940d2e02e25c51, type: 2}
+--- !u!54 &8398855541088726915
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678016136356026034}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &8289956397352328668
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678016136356026034}
+  m_Material: {fileID: 13400000, guid: 5a71e728822716f4d92f8f066c6f3df9, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.67
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1697807205353599195
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +608,7 @@ MonoBehaviour:
   CameraDistance: 4
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   IgnoreTag: Player
   CameraRadius: 0.15
   DampingIntoCollision: 0

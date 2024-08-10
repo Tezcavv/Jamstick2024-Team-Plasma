@@ -9,10 +9,9 @@ public class PlayerRespawner : MonoBehaviour
     public float respawnTimer = 2f;
     public GameObject spawnPoint;
 
-    private PlayerMovement player;
+    public GameObject player;
 
     private void Awake() {
-        player = FindAnyObjectByType<PlayerMovement>();
     }
 
     public void SpawnPlayer() {
@@ -24,6 +23,6 @@ public class PlayerRespawner : MonoBehaviour
     private IEnumerator SpawnPlayerCo() {
         yield return new WaitForSeconds(respawnTimer);
         player.transform.position = spawnPoint.transform.position;
-        player.gameObject.SetActive(true);
+        Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
     }
 }
