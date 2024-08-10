@@ -22,7 +22,7 @@ public class PlayerRespawner : MonoBehaviour
 
     private IEnumerator SpawnPlayerCo() {
         yield return new WaitForSeconds(respawnTimer);
-        player.transform.position = spawnPoint.transform.position;
+        //player.transform.position = spawnPoint.transform.position;
         Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
     }
 }

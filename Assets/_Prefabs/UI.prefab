@@ -2177,7 +2177,7 @@ GameObject:
   - component: {fileID: 1876050518771857013}
   - component: {fileID: 5700027728450482843}
   m_Layer: 5
-  m_Name: InfectedCellsTXT
+  m_Name: InfectedOrgansTXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2230,7 +2230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Infected cells
+  m_text: 'Infected organs
 
     0'
   m_isRightToLeft: 0

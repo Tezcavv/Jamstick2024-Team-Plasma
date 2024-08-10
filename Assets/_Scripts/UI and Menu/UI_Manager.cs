@@ -51,7 +51,6 @@ public class UI_Manager : MonoBehaviour
     {
         //infectedCells = GameManager.instance ? GameManager.instance.infectedCells : 0;
 
-        //SetMenuActive(mainMenu);
     }
 
     public void StartGame()

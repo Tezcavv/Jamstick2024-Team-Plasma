@@ -27,19 +27,20 @@ public class Cuore : Organo
 
         heartBeatSources[source].clip = heartBeatClips[clip];
         heartBeatSources[source].Play();
-
-        //Debug.Log("event triggered");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("triggered");
+
         if (other.gameObject.GetComponentInChildren<PlayerBrain>() != null)
         {
             var player = other.gameObject.GetComponentInChildren<PlayerBrain>();
 
             //player.onDeath.Invoke();
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+            //other.gameObject.SetActive(false);
+            FindObjectOfType<PlayerRespawner>().SpawnPlayer();
 
             GetInfection();
         }
