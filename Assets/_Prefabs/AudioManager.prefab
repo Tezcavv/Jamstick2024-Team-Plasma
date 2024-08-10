@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0dd976bbb4dd8409ebb6b4ab9d9dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 3394562960793a84bb7129affc7ebf8b, type: 3}
+  gameMusic: {fileID: 0}
 --- !u!1 &8833475096770776167
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +92,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.23
   m_Pitch: 1
   Loop: 0
   Mute: 0

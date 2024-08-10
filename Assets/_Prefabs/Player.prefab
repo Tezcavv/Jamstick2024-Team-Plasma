@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2005574109341731186, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
       propertyPath: m_Name
-      value: Virus Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2850546838455770090, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
       propertyPath: m_IsActive
@@ -63,5 +63,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2005574109341731186, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7154260816877286554}
   m_SourcePrefab: {fileID: 100100000, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
+--- !u!1 &6567282709239171315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2005574109341731186, guid: 78783e8f5c6d1d44b8eb2b0f73c8a9a4, type: 3}
+  m_PrefabInstance: {fileID: 4681095795088081281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &7154260816877286554
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567282709239171315}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}

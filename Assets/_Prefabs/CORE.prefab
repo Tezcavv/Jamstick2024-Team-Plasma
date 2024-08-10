@@ -267,7 +267,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5940250636976494616}
-  - component: {fileID: 6887891961006979898}
   m_Layer: 0
   m_Name: CORE
   m_TagString: Untagged
@@ -294,27 +293,6 @@ Transform:
   - {fileID: 2599506537364784433}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6887891961006979898
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782097670932624055}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 70
-  m_Center: {x: 0, y: 11.92, z: -25}
 --- !u!1 &6939260331978322281
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +496,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73991586911ff0347baa4f7ae30c1392, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4548486210251252986}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73991586911ff0347baa4f7ae30c1392, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3507135549337311026}
   m_SourcePrefab: {fileID: 100100000, guid: 73991586911ff0347baa4f7ae30c1392, type: 3}
 --- !u!4 &33075435034635770 stripped
 Transform:
@@ -563,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e5221ff6ca4dc41ae24549ab946f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartInfectionRate: 20
   heartBeatClips:
   - {fileID: 8300000, guid: f274599aea19159489f5e18134847c22, type: 3}
   - {fileID: 8300000, guid: 1cb1f69756f41314e965423a369b36d4, type: 3}
@@ -574,3 +556,24 @@ MonoBehaviour:
   - {fileID: 8852420849879107831}
   - {fileID: 731434085013767675}
   source: -1
+--- !u!135 &3507135549337311026
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810174328203622208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 70
+  m_Center: {x: 0, y: 11.92, z: -25}

@@ -12,7 +12,6 @@ public class Cuore : Organo
 
     [SerializeField] private int heartInfectionRate = 20;
 
-
     public List<AudioClip> heartBeatClips;
     public List<AudioSource> heartBeatSources;
     public int source = -1;
@@ -40,7 +39,7 @@ public class Cuore : Organo
             var player = other.gameObject.GetComponentInChildren<PlayerBrain>();
 
             //player.onDeath.Invoke();
-            player.enabled = false;
+            other.gameObject.SetActive(false);
 
             GetInfection();
         }
@@ -48,9 +47,11 @@ public class Cuore : Organo
 
     public void GetInfection()
     {
+
         HeartInfectionLevel += heartInfectionRate;
 
         UI_Manager.instance.gameUI.GetComponentInChildren<GameUI>().UpdateInfectionFilling(HeartInfectionLevel);
+        Debug.Log(HeartInfectionLevel);
     }
 
 }

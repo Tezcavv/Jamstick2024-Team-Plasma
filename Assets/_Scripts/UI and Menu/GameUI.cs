@@ -15,6 +15,7 @@ public class GameUI : MonoBehaviour
     public void UpdateInfectionFilling(int _infectionLevel)
     {
         //Mathf.Lerp(_infectionLevel, 0, _infectionLevel);
-        InfectionFilling.fillAmount = _infectionLevel/100;
+        float fillConversion = _infectionLevel / 100f;
+        InfectionFilling.fillAmount = fillConversion;
     }
 }

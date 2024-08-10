@@ -40,6 +40,8 @@ public class UI_Manager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
+        Time.timeScale = 0f;
+
         pauseAction = GameManager.Instance.inputActions.UI.Pause;
         pauseAction.started += PauseGame;
     }
@@ -56,6 +58,7 @@ public class UI_Manager : MonoBehaviour
     {
         SetMenuOff(mainMenu);
         SetMenuActive(gameUI);
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -93,6 +96,8 @@ public class UI_Manager : MonoBehaviour
 
         SetMenuOff(gameUI);
         SetMenuActive(mainMenu);
+
+        Time.timeScale = 0f;
     }
 
     public void TogglePause()
@@ -102,14 +107,14 @@ public class UI_Manager : MonoBehaviour
             isPaused = true;
             SetMenuActive(pauseMenu);
 
-            Time.timeScale = 0;
+            Time.timeScale = 0f;
         }
         else
         {
             isPaused = false;
             SetMenuOff(pauseMenu);
 
-            Time.timeScale = 1;
+            Time.timeScale = 1f;
         }
     }
 
