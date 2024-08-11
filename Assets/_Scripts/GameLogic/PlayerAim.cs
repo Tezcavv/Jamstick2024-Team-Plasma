@@ -42,9 +42,9 @@ public class PlayerAim : MonoBehaviour {
     }
 
     private void CheckForPlayer(InputAction.CallbackContext context) {
-        Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, CinemachineCameraTarget.transform.position.z ));
+        Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0 ));
 
-        RaycastHit[] hits = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 1), Camera.main.transform.forward, Quaternion.identity, playerParams.BoxCastRange, LayerMask.GetMask("VirusBrain"));
+        RaycastHit[] hits = Physics.BoxCastAll(rayOrigin, new Vector3(5, 5, 5), Camera.main.transform.forward, Quaternion.identity, playerParams.BoxCastRange, LayerMask.GetMask("VirusBrain"));
 
         if (hits.Length == 0)
             return;
