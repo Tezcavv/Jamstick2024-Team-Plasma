@@ -33,16 +33,25 @@ public class VolumeSettings : MonoBehaviour
         musicSlider2.onValueChanged.AddListener(SetMusicVolume);
         SFXSlider2.onValueChanged.AddListener(SetSFXVolume);
 
+        
 
-        masterVolume = 1f;
-        musicVolume = musicSlider.value;
-        SFXVolume = SFXSlider.value;
+        //masterVolume = 1f;
+        //musicVolume = musicSlider.value;
+        //SFXVolume = SFXSlider.value;
     }
 
     void Start()
     {
-        musicSlider.value = AudioManager.instance.MusicVolume;
-        SFXSlider.value = AudioManager.instance.SfxVolume;
+        LoadVolumes();
+    }
+
+    public void LoadVolumes()
+    {
+        List<float> volumes = AudioManager.instance.LoadVolumesFromPref();
+
+        masterVolume = volumes[0];
+        musicSlider.value = volumes[1];
+        SFXSlider.value = volumes[2];
     }
 
     public void SetMusicVolume(float value)
@@ -75,7 +84,7 @@ public class VolumeSettings : MonoBehaviour
     {
         List<float> volumes = new List<float>() { masterVolume, musicVolume, SFXVolume };
 
-        UI_Manager.instance.SaveVolumesToPref(volumes);
+        AudioManager.instance.SaveVolumesToPref(volumes);
     }
 
     

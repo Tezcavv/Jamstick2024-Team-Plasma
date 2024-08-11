@@ -47,6 +47,8 @@ public class UI_Manager : MonoBehaviour
 
         //Time.timeScale = 0f;
 
+
+
         infectedCells = PlayerPrefs.GetInt("infected_cells", 0);
 
         pauseAction = GameManager.Instance.inputActions.UI.Pause;
@@ -133,13 +135,6 @@ public class UI_Manager : MonoBehaviour
     public void SaveScoreToPref()
     {
         PlayerPrefs.SetInt("infected_cells", InfectedCells);
-    }
-
-    public void SaveVolumesToPref(List<float> volumes)
-    {
-        PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, volumes[0]);
-        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, volumes[1]);
-        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, volumes[2]);
     }
 
     public void WinCondition(int _infectionLevel)

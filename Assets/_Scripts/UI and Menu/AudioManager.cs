@@ -12,16 +12,6 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "SFXVolume";
 
-    private float masterVolume;
-    public float MasterVolume => masterVolume;
-
-    private float musicVolume;
-    public float MusicVolume => musicVolume;
-
-    private float sfxVolume;
-    public float SfxVolume => sfxVolume;
-
-
     public static AudioSource MusicSource;
     [SerializeField] private AudioClip menuMusic, gameMusic;
 
@@ -40,9 +30,6 @@ public class AudioManager : MonoBehaviour
 
         MusicSource = GetComponentInChildren<AudioSource>();
 
-        masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
-        musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
-        sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
 
     }
     void Start()
@@ -69,6 +56,24 @@ public class AudioManager : MonoBehaviour
 
         _audioSource.clip = _clips[_clip];
         _audioSource.Play();
+    }
+
+    public void SaveVolumesToPref(List<float> volumes)
+    {
+        PlayerPrefs.SetFloat(MASTER_KEY, volumes[0]);
+        PlayerPrefs.SetFloat(MUSIC_KEY, volumes[1]);
+        PlayerPrefs.SetFloat(SFX_KEY, volumes[2]);
+    }
+
+    public List<float> LoadVolumesFromPref()
+    {
+        List<float> volumes = new List<float>() { 1f,1f,1f};
+
+        volumes[0] = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
+        volumes[1] = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        volumes[2] = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        return volumes;
     }
 
 }
