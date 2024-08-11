@@ -22,6 +22,10 @@ public class PlayerBrain : MonoBehaviour {
             Destroy(transform.parent.gameObject);
             FindAnyObjectByType<PlayerRespawner>().SpawnPlayer();
             onDeath.Invoke();
+
+            // [DAVIDE] - Ho aggiunto la prossima riga di codice perchè non mi funziona l'invoke dell'evento: attiva il messaggio di morte //
+            //
+            UI_Manager.instance.DeadTextRoutine();
         }
     }
 

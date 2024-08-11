@@ -25,6 +25,10 @@ public class UI_Manager : MonoBehaviour
     public GameObject gameUI;
     public GameObject pauseMenu;
     public GameObject optionsMenu;
+    public GameObject WinPanel;
+    public GameObject DeadTXT;
+    public GameObject HitTXT;
+
 
 
     InputAction pauseAction;
@@ -46,8 +50,6 @@ public class UI_Manager : MonoBehaviour
         }
 
         //Time.timeScale = 0f;
-
-
 
         infectedCells = PlayerPrefs.GetInt("infected_cells", 0);
 
@@ -122,6 +124,30 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
+    public void DeadTextRoutine()
+    {
+        IEnumerator deadMsg()
+        {
+            SetMenuActive(DeadTXT);
+            yield return new WaitForSeconds(1.5f);
+            SetMenuOff(DeadTXT);
+
+        }
+        StartCoroutine(deadMsg());
+
+    }
+    public void HitTextRoutine()
+    {
+        IEnumerator hitMsg()
+        {
+            SetMenuActive(HitTXT);
+            yield return new WaitForSeconds(1f);
+            SetMenuOff(HitTXT);
+
+        }
+        StartCoroutine(hitMsg());
+    }
+
     public void SetMenuActive(GameObject _menu)
     {
         _menu.SetActive(true);
@@ -155,6 +181,8 @@ public class UI_Manager : MonoBehaviour
 
         SaveScoreToPref();
 
+        SetMenuActive(WinPanel);
+
         Debug.Log("ORGAN IS INFECTED!!!");
 
         yield return new WaitForSeconds(1f);
@@ -163,6 +191,7 @@ public class UI_Manager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        SetMenuOff(WinPanel);
         SetMenuOff(gameUI);
         SetMenuActive(mainMenu);
 

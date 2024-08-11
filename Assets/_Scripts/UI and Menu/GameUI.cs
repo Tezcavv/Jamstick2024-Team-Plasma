@@ -5,6 +5,11 @@ public class GameUI : MonoBehaviour
 {
     public Image InfectionFilling;
 
+    private void Start()
+    {
+        
+    }
+
     public void UpdateInfectionFilling(int _infectionLevel)
     {
         //Mathf.Lerp(_infectionLevel, 0, _infectionLevel);

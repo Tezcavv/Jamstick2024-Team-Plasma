@@ -34,9 +34,10 @@ public class Cuore : Organo
         {
             var player = other.gameObject.GetComponentInChildren<PlayerBrain>();
 
-            //player.onDeath.Invoke();
+            //player.onInfezione.Invoke();
+            UI_Manager.instance.HitTextRoutine();
+
             Destroy(other.transform.parent.gameObject);
-            //other.gameObject.SetActive(false);
 
             GetInfection();
 
