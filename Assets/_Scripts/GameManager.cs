@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-100)] 
 // Voglio che sia il primo in modo da inizializzare subito le variabili statiche che userò in giro
-    public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour 
+{
 
     public static GameManager Instance;
     public InputSystem_Actions inputActions;
@@ -15,9 +16,7 @@ using UnityEngine.InputSystem;
 
     public UnityEvent<PlayerBrain> OnActivePlayerChanged;
 
-    public PlayerBrain ActivePlayer { get => activePlayer; set {
-            SetActivePlayer(value);
-} }
+    public PlayerBrain ActivePlayer { get => activePlayer; set {SetActivePlayer(value); } }
 
     private void SetActivePlayer(PlayerBrain value) {
         UnsubscribeToPlayerEvents();
@@ -49,13 +48,13 @@ using UnityEngine.InputSystem;
     private void Awake() {
 
         if (Instance != null && Instance != this) {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         else {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
-        DontDestroyOnLoad(this);
         inputActions = new InputSystem_Actions();
         inputActions.Enable();
 

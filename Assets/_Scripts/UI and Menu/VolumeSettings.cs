@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -5,7 +6,9 @@ using UnityEngine.UI;
 public class VolumeSettings : MonoBehaviour
 {
     public AudioMixer VolumesMixer;
+
     //public Slider masterSlider;
+    private float masterVolume;
 
     public Slider musicSlider;
     public Slider musicSlider2;
@@ -21,6 +24,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void Awake()
     {
+
         //masterSlider.onValueChanged.AddListener(SetMasterVolume);
 
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
@@ -29,10 +33,10 @@ public class VolumeSettings : MonoBehaviour
         musicSlider2.onValueChanged.AddListener(SetMusicVolume);
         SFXSlider2.onValueChanged.AddListener(SetSFXVolume);
 
-        
 
-        //musicVolume = musicSlider.value;
-        //SFXVolume = SFXSlider.value;
+        masterVolume = 1f;
+        musicVolume = musicSlider.value;
+        SFXVolume = SFXSlider.value;
     }
 
     void Start()
@@ -69,13 +73,10 @@ public class VolumeSettings : MonoBehaviour
 
     void OnDisable()
     {
-        SaveVolumesToPref();
+        List<float> volumes = new List<float>() { masterVolume, musicVolume, SFXVolume };
+
+        UI_Manager.instance.SaveVolumesToPref(volumes);
     }
 
-    public void SaveVolumesToPref()
-    {
-        //PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, masterSlider.value);
-        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);
-        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, SFXSlider.value);
-    }
+    
 }

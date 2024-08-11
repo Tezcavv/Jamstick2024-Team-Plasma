@@ -5,6 +5,10 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 [DefaultExecutionOrder(-99)]
 
@@ -12,7 +16,8 @@ public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager instance;
 
-    public int infectedCells = 666;
+    private int infectedCells = 0;
+    public int InfectedCells => infectedCells;
 
     public bool isPaused = false;
 
@@ -31,7 +36,7 @@ public class UI_Manager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         else
@@ -40,21 +45,18 @@ public class UI_Manager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+
+        infectedCells = PlayerPrefs.GetInt("infected_cells", 0);
 
         pauseAction = GameManager.Instance.inputActions.UI.Pause;
         pauseAction.started += PauseGame;
     }
 
-
-    private void Start()
-    {
-        //infectedCells = GameManager.instance ? GameManager.instance.infectedCells : 0;
-
-    }
-
     public void StartGame()
     {
+        SceneManager.LoadScene(1);
+
         SetMenuOff(mainMenu);
         SetMenuActive(gameUI);
         Time.timeScale = 1f;
@@ -92,11 +94,12 @@ public class UI_Manager : MonoBehaviour
     public void BackToMain()
     {
         TogglePause();
-
         SetMenuOff(gameUI);
         SetMenuActive(mainMenu);
 
-        Time.timeScale = 0f;
+        SceneManager.LoadScene(0);
+
+        //Time.timeScale = 0f;
     }
 
     public void TogglePause()
@@ -125,5 +128,50 @@ public class UI_Manager : MonoBehaviour
     public void SetMenuOff(GameObject _menu)
     {
         _menu.SetActive(false);
+    }
+
+    public void SaveScoreToPref()
+    {
+        PlayerPrefs.SetInt("infected_cells", InfectedCells);
+    }
+
+    public void SaveVolumesToPref(List<float> volumes)
+    {
+        PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, volumes[0]);
+        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, volumes[1]);
+        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, volumes[2]);
+    }
+
+    public void WinCondition(int _infectionLevel)
+    {
+        if (_infectionLevel >= 100)
+        {
+            StartCoroutine(WinningRoutine());
+        }
+        else
+        {
+            FindObjectOfType<PlayerRespawner>().SpawnPlayer();
+        }
+    }
+
+    public IEnumerator WinningRoutine()
+    {
+        infectedCells++;
+
+        SaveScoreToPref();
+
+        Debug.Log("ORGAN IS INFECTED!!!");
+
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log("YOU WIN!!!");
+
+        yield return new WaitForSeconds(1f);
+
+        SetMenuOff(gameUI);
+        SetMenuActive(mainMenu);
+
+        SceneManager.LoadScene(0);
+
     }
 }

@@ -23,10 +23,7 @@ public class Cuore : Organo
         else
             source = 0;
 
-        int clip = Random.Range(0, 5);
-
-        heartBeatSources[source].clip = heartBeatClips[clip];
-        heartBeatSources[source].Play();
+        AudioManager.instance.SourcePlayClips(heartBeatSources[source], heartBeatClips);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,19 +37,20 @@ public class Cuore : Organo
             //player.onDeath.Invoke();
             Destroy(other.transform.parent.gameObject);
             //other.gameObject.SetActive(false);
-            FindObjectOfType<PlayerRespawner>().SpawnPlayer();
 
             GetInfection();
+
+            UI_Manager.instance.WinCondition(HeartInfectionLevel);
         }
     }
 
     public void GetInfection()
     {
-
         HeartInfectionLevel += heartInfectionRate;
-
         UI_Manager.instance.gameUI.GetComponentInChildren<GameUI>().UpdateInfectionFilling(HeartInfectionLevel);
+
         Debug.Log(HeartInfectionLevel);
+         
     }
 
 }

@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(-98)]
@@ -25,7 +27,16 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
 
         MusicSource = GetComponentInChildren<AudioSource>();
 
@@ -40,18 +51,24 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlayMusic()
+    public void PlayBackgroundMusic()
     {
         MusicSource.clip = menuMusic;
         MusicSource.Play();
     }
 
-    public void SourcePlayClip(AudioSource _audioSource, AudioClip _clip)
+    public void SourcePlayClips(AudioSource _audioSource, AudioClip _clip)
     {
         _audioSource.clip = _clip;
         _audioSource.Play();
     }
 
-    
+    public void SourcePlayClips(AudioSource _audioSource, List<AudioClip> _clips)
+    {
+        int _clip = Random.Range(0, _clips.Count);
+
+        _audioSource.clip = _clips[_clip];
+        _audioSource.Play();
+    }
 
 }
