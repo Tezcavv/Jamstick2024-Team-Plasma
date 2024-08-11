@@ -30,7 +30,7 @@ public class PlayerBrain : MonoBehaviour {
         if (other.gameObject.TryGetComponent(out Organo organo)) {
 
             //logica infezione / eventi
-            gameObject.SetActive(false);
+            Destroy(gameObject);
             onInfezione.Invoke();
             FindAnyObjectByType<PlayerRespawner>().SpawnPlayer();
 

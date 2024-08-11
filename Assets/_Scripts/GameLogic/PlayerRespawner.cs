@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerRespawner : MonoBehaviour
 {
 
-    public float respawnTimer = 2f;
+    public float respawnTimer = 0.5f;
     public GameObject spawnPoint;
 
     public GameObject player;
