@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        gameTitle.text = $"infectous";
+        gameTitle.text = $"infectious";
     }
 
     void Start()

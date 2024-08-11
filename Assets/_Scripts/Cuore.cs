@@ -12,6 +12,8 @@ public class Cuore : Organo
 
     [SerializeField] private int heartInfectionRate = 20;
 
+    public GameObject hitVFX;
+
     public List<AudioClip> heartBeatClips;
     public List<AudioSource> heartBeatSources;
     public int source = -1;

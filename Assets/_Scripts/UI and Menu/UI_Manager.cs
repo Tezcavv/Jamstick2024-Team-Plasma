@@ -16,6 +16,8 @@ public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager instance;
 
+    [SerializeField] private int MaxInfectionLevel = 100;
+
     private int infectedCells = 0;
     public int InfectedCells => infectedCells;
 
@@ -177,7 +179,7 @@ public class UI_Manager : MonoBehaviour
 
     public void WinCondition(int _infectionLevel)
     {
-        if (_infectionLevel >= 100)
+        if (_infectionLevel >= MaxInfectionLevel)
         {
             StartCoroutine(WinningRoutine());
         }
@@ -189,9 +191,12 @@ public class UI_Manager : MonoBehaviour
 
     public IEnumerator WinningRoutine()
     {
+
         infectedCells++;
 
         SaveScoreToPref();
+
+        yield return new WaitForSeconds(1f);
 
         SetMenuActive(WinPanel);
 
