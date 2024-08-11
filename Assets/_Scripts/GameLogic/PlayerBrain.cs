@@ -25,7 +25,7 @@ public class PlayerBrain : MonoBehaviour {
 
             // [DAVIDE] - Ho aggiunto la prossima riga di codice perchè non mi funziona l'invoke dell'evento: attiva il messaggio di morte //
             //
-            UI_Manager.instance.DeadTextRoutine();
+            UI_Manager.instance.DeadEffectsRoutine();
         }
     }
 

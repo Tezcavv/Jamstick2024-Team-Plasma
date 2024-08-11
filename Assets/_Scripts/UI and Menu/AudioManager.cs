@@ -12,8 +12,8 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "SFXVolume";
 
-    public static AudioSource MusicSource;
-    [SerializeField] private AudioClip menuMusic, gameMusic;
+    public static AudioSource MusicSource, DeathSource, HitSource, WinSource;
+    [SerializeField] private List<AudioClip> menuMusic, gameMusic, deathSound, hitSound, winSound;
 
     private void Awake()
     {
@@ -28,21 +28,31 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        MusicSource = GetComponentInChildren<AudioSource>();
+        AudioSource[] sources = GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource source in sources)
+        {
+            if (source.gameObject.name == "MusicSource")
+                MusicSource = source;
+            if (source.gameObject.name == "DeathSource")
+                DeathSource = source;
+            if (source.gameObject.name == "HitSource")
+                HitSource = source;
+            if (source.gameObject.name == "WinSource")
+                WinSource = source;
 
+        }
 
+        //if(TryGetComponent<AudioSource>(out AudioSource source))
+        //{
+        //    source.
+        //}
+        //if (GetComponentInChildren<AudioSource>().gameObject.name == "MusicSource")
+        //{
+        //    MusicSource = 
+        //}
     }
-    void Start()
-    {
 
-
-    }
-
-    public void PlayBackgroundMusic()
-    {
-        MusicSource.clip = menuMusic;
-        MusicSource.Play();
-    }
+    
 
     public void SourcePlayClips(AudioSource _audioSource, AudioClip _clip)
     {
@@ -56,6 +66,24 @@ public class AudioManager : MonoBehaviour
 
         _audioSource.clip = _clips[_clip];
         _audioSource.Play();
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        SourcePlayClips(MusicSource, menuMusic);
+    }
+
+    public void PlayHitSound()
+    {
+        SourcePlayClips(HitSource, hitSound);
+    }
+    public void PlayDeathSound()
+    {
+        SourcePlayClips(DeathSource, deathSound);
+    }
+    public void PlayWinSound()
+    {
+        SourcePlayClips(WinSource, winSound);
     }
 
     public void SaveVolumesToPref(List<float> volumes)

@@ -124,28 +124,40 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    public void DeadTextRoutine()
+    Coroutine deathRoutine;
+    Coroutine hitRoutine;
+
+    public void DeadEffectsRoutine()
     {
+
         IEnumerator deadMsg()
         {
+            AudioManager.instance.PlayDeathSound();
+
             SetMenuActive(DeadTXT);
             yield return new WaitForSeconds(1.5f);
             SetMenuOff(DeadTXT);
-
+            deathRoutine = null;
         }
-        StartCoroutine(deadMsg());
+
+        if(deathRoutine == null)
+            deathRoutine = StartCoroutine(deadMsg());
 
     }
-    public void HitTextRoutine()
+    public void HitEffectsRoutine()
     {
         IEnumerator hitMsg()
         {
+            AudioManager.instance.PlayHitSound();
             SetMenuActive(HitTXT);
             yield return new WaitForSeconds(1f);
             SetMenuOff(HitTXT);
+            hitRoutine = null;
 
         }
-        StartCoroutine(hitMsg());
+
+        if (hitRoutine == null)
+            hitRoutine = StartCoroutine(hitMsg());
     }
 
     public void SetMenuActive(GameObject _menu)
@@ -182,6 +194,8 @@ public class UI_Manager : MonoBehaviour
         SaveScoreToPref();
 
         SetMenuActive(WinPanel);
+
+        AudioManager.instance.PlayWinSound();
 
         Debug.Log("ORGAN IS INFECTED!!!");
 
