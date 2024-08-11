@@ -10,12 +10,12 @@ public class VolumeSettings : MonoBehaviour
     //public Slider masterSlider;
     private float masterVolume;
 
-    public Slider musicSlider;
-    public Slider musicSlider2;
+    public Slider musicSlider_pause;
+    public Slider musicSlider_main;
     private float musicVolume;
 
-    public Slider SFXSlider;
-    public Slider SFXSlider2;
+    public Slider SFXSlider_pause;
+    public Slider SFXSlider_main;
     private float SFXVolume;
 
     public const string MIXER_MASTER = "MasterVolume";
@@ -27,17 +27,17 @@ public class VolumeSettings : MonoBehaviour
 
         //masterSlider.onValueChanged.AddListener(SetMasterVolume);
 
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        SFXSlider.onValueChanged.AddListener(SetSFXVolume); 
+        musicSlider_pause.onValueChanged.AddListener(SetMusicVolume);
+        SFXSlider_pause.onValueChanged.AddListener(SetSFXVolume); 
 
-        musicSlider2.onValueChanged.AddListener(SetMusicVolume);
-        SFXSlider2.onValueChanged.AddListener(SetSFXVolume);
+        musicSlider_main.onValueChanged.AddListener(SetMusicVolume);
+        SFXSlider_main.onValueChanged.AddListener(SetSFXVolume);
 
         
 
         //masterVolume = 1f;
-        //musicVolume = musicSlider.value;
-        //SFXVolume = SFXSlider.value;
+        //musicVolume = musicSlider_pause.value;
+        //SFXVolume = SFXSlider_pause.value;
     }
 
     void Start()
@@ -50,15 +50,15 @@ public class VolumeSettings : MonoBehaviour
         List<float> volumes = AudioManager.instance.LoadVolumesFromPref();
 
         masterVolume = volumes[0];
-        musicSlider.value = volumes[1];
-        SFXSlider.value = volumes[2];
+        musicSlider_pause.value = volumes[1];
+        SFXSlider_pause.value = volumes[2];
     }
 
     public void SetMusicVolume(float value)
     {
         musicVolume = value;
-        musicSlider.value = musicVolume;
-        musicSlider2.value = musicVolume;
+        musicSlider_pause.value = musicVolume;
+        musicSlider_main.value = musicVolume;
 
         VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20 - 20);
     }
@@ -66,8 +66,8 @@ public class VolumeSettings : MonoBehaviour
     public void SetSFXVolume(float value)
     {
         SFXVolume = value;
-        SFXSlider.value = SFXVolume;
-        SFXSlider2.value = SFXVolume;
+        SFXSlider_pause.value = SFXVolume;
+        SFXSlider_main.value = SFXVolume;
 
         VolumesMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
     }

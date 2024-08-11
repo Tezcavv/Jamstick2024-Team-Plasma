@@ -67,11 +67,11 @@ public class AudioManager : MonoBehaviour
 
     public List<float> LoadVolumesFromPref()
     {
-        List<float> volumes = new List<float>() { 1f,1f,1f};
+        List<float> volumes = new List<float>();
 
-        volumes[0] = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
-        volumes[1] = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
-        volumes[2] = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+        volumes.Add(PlayerPrefs.GetFloat(MASTER_KEY, 1f));
+        volumes.Add(PlayerPrefs.GetFloat(MUSIC_KEY, 1f));
+        volumes.Add(PlayerPrefs.GetFloat(SFX_KEY, 1f));
 
         return volumes;
     }
