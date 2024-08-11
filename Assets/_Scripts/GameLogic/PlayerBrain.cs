@@ -19,8 +19,8 @@ public class PlayerBrain : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.TryGetComponent(out GlobuloBiancoMovement g)) {
 
-            //logica morte
-            gameObject.SetActive(false);
+            Destroy(transform.parent.gameObject);
+            FindAnyObjectByType<PlayerRespawner>().SpawnPlayer();
             onDeath.Invoke();
         }
     }
@@ -28,11 +28,6 @@ public class PlayerBrain : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.TryGetComponent(out Organo organo)) {
-
-            //logica infezione / eventi
-            Destroy(gameObject);
-            onInfezione.Invoke();
-            FindAnyObjectByType<PlayerRespawner>().SpawnPlayer();
 
         }
     }

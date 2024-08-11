@@ -38,7 +38,7 @@ public class Cuore : Organo
             var player = other.gameObject.GetComponentInChildren<PlayerBrain>();
 
             //player.onDeath.Invoke();
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
             //other.gameObject.SetActive(false);
             FindObjectOfType<PlayerRespawner>().SpawnPlayer();
 

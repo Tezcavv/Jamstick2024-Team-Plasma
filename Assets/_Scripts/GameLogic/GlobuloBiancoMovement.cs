@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Linq;
 using System.Net.Mail;
@@ -27,7 +28,7 @@ public class GlobuloBiancoMovement : MonoBehaviour {
 
         Vector3 movement = (toFollow.transform.position - rb.transform.position).normalized;
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z) * gParams.movementSpeed;
-
+        rb.DOLookAt(toFollow.transform.position, Time.fixedDeltaTime);
 
     }
 
