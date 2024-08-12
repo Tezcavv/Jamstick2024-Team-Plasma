@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 using System;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEditor.SearchService;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 [DefaultExecutionOrder(-99)]
