@@ -8,6 +8,7 @@ public class VirusBrain : MonoBehaviour {
     public PlayerBrain player;
 
     public void BecomePlayer() {
+        AudioManager.instance.PlaySwapSound();
         GameManager.Instance.ActivePlayer = player;
         player.gameObject.SetActive(true);
         gameObject.SetActive(false);

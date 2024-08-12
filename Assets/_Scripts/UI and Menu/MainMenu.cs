@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     private void MainMenuInit()
     {
         
-        infectedCellsText.text = $"infected cells\n{UI_Manager.instance.InfectedCells}";
+        infectedCellsText.text = $"TOTAL ORGANS INFECTED - {UI_Manager.instance.InfectedCells}";
     }
 }
 

@@ -12,8 +12,8 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "SFXVolume";
 
-    public static AudioSource MusicSource, DeathSource, HitSource, WinSource;
-    [SerializeField] private List<AudioClip> menuMusic, gameMusic, deathSound, hitSound, winSound, uiSound;
+    public static AudioSource MusicSource, DeathSource, HitSource, WinSource, SwapSource;
+    [SerializeField] private List<AudioClip> menuMusic, gameMusic, deathSound, hitSound, winSound, swapSound, uiSound;
 
     private void Awake()
     {
@@ -39,6 +39,8 @@ public class AudioManager : MonoBehaviour
                 HitSource = source;
             if (source.gameObject.name == "WinSource")
                 WinSource = source;
+            if (source.gameObject.name == "SwapSource")
+                SwapSource = source;
 
         }
 
@@ -88,6 +90,10 @@ public class AudioManager : MonoBehaviour
     public void PlayWinSound()
     {
         SourcePlayClips(WinSource, winSound);
+    }
+    public void PlaySwapSound()
+    {
+        SourcePlayClips(SwapSource, swapSound);
     }
 
     public void PlayUiSound()

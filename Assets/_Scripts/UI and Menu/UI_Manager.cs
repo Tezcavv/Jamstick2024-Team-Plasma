@@ -169,7 +169,7 @@ public class UI_Manager : MonoBehaviour
     {
         IEnumerator hitMsg()
         {
-            var effect = Instantiate(HitVFX, pos, Quaternion.Euler(0f, 0f , 0f));
+            var effect = Instantiate(HitVFX, pos, Quaternion.Euler(-90f, 0f, 0f));
 
             AudioManager.instance.PlayHitSound();
             SetMenuActive(HitTXT);
