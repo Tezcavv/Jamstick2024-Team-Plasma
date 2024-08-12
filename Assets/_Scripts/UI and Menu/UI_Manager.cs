@@ -33,6 +33,8 @@ public class UI_Manager : MonoBehaviour
 
     public GameObject HitVFX;
 
+    public AudioSource UiSource;
+
     InputAction pauseAction;
 
     public UnityEvent onPause;
@@ -56,11 +58,14 @@ public class UI_Manager : MonoBehaviour
         infectedCells = PlayerPrefs.GetInt("infected_cells", 0);
 
         pauseAction = GameManager.Instance.inputActions.UI.Pause;
-        pauseAction.started += PauseGame;
+        pauseAction.started += EscPauseGame;
     }
+
+    #region [BUTTONS]
 
     public void StartGame()
     {
+        AudioManager.instance.PlayUiSound();
         SceneManager.LoadScene(1);
 
         SetMenuOff(mainMenu);
@@ -71,34 +76,37 @@ public class UI_Manager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
-    }
+        AudioManager.instance.PlayUiSound();
 
-    public void PauseGame(InputAction.CallbackContext context) {
-        if(!mainMenu.activeInHierarchy ) {
-            TogglePause();
-            onPause?.Invoke();
-        }
+        Application.Quit();
     }
 
     public void OpenOptions()
     {
+        AudioManager.instance.PlayUiSound();
+
         SetMenuActive(optionsMenu);
     }
 
     public void CloseOptions()
     {
+        AudioManager.instance.PlayUiSound();
+
         SetMenuOff(optionsMenu);
     }
 
     public void ResumeGame()
     {
+        AudioManager.instance.PlayUiSound();
+
         TogglePause();
         onResume?.Invoke();
     }
 
     public void BackToMain()
     {
+        AudioManager.instance.PlayUiSound();
+
         TogglePause();
         SetMenuOff(gameUI);
         SetMenuActive(mainMenu);
@@ -106,6 +114,17 @@ public class UI_Manager : MonoBehaviour
         SceneManager.LoadScene(0);
 
         //Time.timeScale = 0f;
+    }
+
+    #endregion
+
+    public void EscPauseGame(InputAction.CallbackContext context)
+    {
+        if (!mainMenu.activeInHierarchy)
+        {
+            TogglePause();
+            onPause?.Invoke();
+        }
     }
 
     public void TogglePause()

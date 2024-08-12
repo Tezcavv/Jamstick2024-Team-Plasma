@@ -60,6 +60,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d95d79e665a9da43a7c52f732e3df25, type: 3}
   winSound:
   - {fileID: 8300000, guid: 1b2cd202c35ecfd45b93bea2c2aa9fcf, type: 3}
+  uiSound:
+  - {fileID: 8300000, guid: 59ba48cf7da5a9446871dcdc8a73d6b2, type: 3}
 --- !u!1 &1982160227990891157
 GameObject:
   m_ObjectHideFlags: 0

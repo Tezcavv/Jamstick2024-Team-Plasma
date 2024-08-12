@@ -58,7 +58,7 @@ public class VolumeSettings : MonoBehaviour
         musicSlider_pause.value = musicVolume;
         musicSlider_main.value = musicVolume;
 
-        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20 - 15);
+        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20 - 10);
     }
 
     public void SetSFXVolume(float value)

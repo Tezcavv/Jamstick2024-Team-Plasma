@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     public const string SFX_KEY = "SFXVolume";
 
     public static AudioSource MusicSource, DeathSource, HitSource, WinSource;
-    [SerializeField] private List<AudioClip> menuMusic, gameMusic, deathSound, hitSound, winSound;
+    [SerializeField] private List<AudioClip> menuMusic, gameMusic, deathSound, hitSound, winSound, uiSound;
 
     private void Awake()
     {
@@ -88,6 +88,11 @@ public class AudioManager : MonoBehaviour
     public void PlayWinSound()
     {
         SourcePlayClips(WinSource, winSound);
+    }
+
+    public void PlayUiSound()
+    {
+        SourcePlayClips(UI_Manager.instance.UiSource, uiSound);
     }
 
     public void SaveVolumesToPref(List<float> volumes)
