@@ -29,8 +29,6 @@ public class MainMenu : MonoBehaviour
     private void MainMenuInit()
     {
         
-        AudioManager.instance.PlayBackgroundMusic();
-
         infectedCellsText.text = $"infected cells\n{UI_Manager.instance.InfectedCells}";
     }
 }

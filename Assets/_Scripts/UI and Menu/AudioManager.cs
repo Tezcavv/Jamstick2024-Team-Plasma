@@ -42,6 +42,9 @@ public class AudioManager : MonoBehaviour
 
         }
 
+
+        PlayBackgroundMusic();
+
         //if(TryGetComponent<AudioSource>(out AudioSource source))
         //{
         //    source.

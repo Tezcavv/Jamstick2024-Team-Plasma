@@ -206,7 +206,7 @@ public class UI_Manager : MonoBehaviour
 
         AudioManager.instance.PlayWinSound();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         FindFirstObjectByType<Cuore>().HeartInfectionLevel = 0;
 

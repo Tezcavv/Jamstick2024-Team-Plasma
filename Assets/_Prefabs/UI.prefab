@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 504600763527251972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.691985, y: 4.994319, z: -31.896147}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cf211050b2ee240b57909877b4a778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxInfectionLevel: 20
+  MaxInfectionLevel: 100
   isPaused: 0
   mainMenu: {fileID: 855411006501870325}
   gameUI: {fileID: 5159865257110387560}
@@ -384,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098cfe8c689240c418917ca58a824891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTitle: {fileID: 0}
   infectedCellsText: {fileID: 5700027728450482843}
 --- !u!328 &9211988217847980459
 VideoPlayer:
