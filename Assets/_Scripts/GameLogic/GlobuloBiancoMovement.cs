@@ -25,30 +25,33 @@ public class GlobuloBiancoMovement : MonoBehaviour {
         if (result.Length < 0) return; 
 
         GameObject toFollow;
-        toFollow = result.FirstOrDefault(c => CheckGameObject(c))?.gameObject;
+        toFollow = result.FirstOrDefault(c => IsPlayer(c))?.gameObject;
         if (toFollow == null) {
             ReturnToStartPoint();
             return;
         }
 
         Vector3 movement = (toFollow.transform.position - rb.transform.position).normalized;
-        rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z) * gParams.movementSpeed;
-        rb.DOLookAt(toFollow.transform.position, Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector3(movement.x, 0, movement.z) * gParams.movementSpeed;
+        //rb.DOLookAt(toFollow.transform.position, Time.fixedDeltaTime);
 
     }
 
     private void ReturnToStartPoint() {
+
+        if (Vector3.Distance(startPos, rb.transform.position) < 0.05f) return;
+
         Vector3 movement = (startPos- rb.transform.position).normalized;
-        rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z) * gParams.movementSpeed;
+        rb.linearVelocity = new Vector3(movement.x, 0, movement.z) * gParams.movementSpeed;
     }
 
-    private bool CheckGameObject(Collider c) {
+    private bool IsPlayer(Collider c) {
        
         if(c.gameObject == null) return false;
 
-        if(c.gameObject.GetComponentInChildren<PlayerBrain>(false) == null) return false;
+        return c.gameObject.GetComponentInChildren<PlayerBrain>(false) != null;
 
-        return true;
+        
 
 
     }
