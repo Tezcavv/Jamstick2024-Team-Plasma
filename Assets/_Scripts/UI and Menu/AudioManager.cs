@@ -69,8 +69,9 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayBackgroundMusic()
-    {
-        SourcePlayClips(MusicSource, menuMusic);
+    {   
+        if(!MusicSource.isPlaying)
+            SourcePlayClips(MusicSource, menuMusic);
     }
 
     public void PlayHitSound()

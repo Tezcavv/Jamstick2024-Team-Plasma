@@ -7,7 +7,12 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        
+        UpdateInfectionFilling(0);
+
+    }
+    private void OnDisable()
+    {
+        UpdateInfectionFilling(0);
     }
 
     public void UpdateInfectionFilling(int _infectionLevel)

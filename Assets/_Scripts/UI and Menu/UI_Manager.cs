@@ -31,7 +31,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject DeadTXT;
     public GameObject HitTXT;
 
-
+    public GameObject HitVFX;
 
     InputAction pauseAction;
 
@@ -146,14 +146,19 @@ public class UI_Manager : MonoBehaviour
             deathRoutine = StartCoroutine(deadMsg());
 
     }
-    public void HitEffectsRoutine()
+    public void HitEffectsRoutine(Vector3 pos)
     {
         IEnumerator hitMsg()
         {
+            var effect = Instantiate(HitVFX, pos, Quaternion.Euler(0f, 0f , 0f));
+
             AudioManager.instance.PlayHitSound();
             SetMenuActive(HitTXT);
             yield return new WaitForSeconds(1f);
             SetMenuOff(HitTXT);
+
+            Destroy(effect.gameObject);
+
             hitRoutine = null;
 
         }
@@ -185,13 +190,12 @@ public class UI_Manager : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<PlayerRespawner>().SpawnPlayer();
+            FindFirstObjectByType<PlayerRespawner>().SpawnPlayer();
         }
     }
 
     public IEnumerator WinningRoutine()
     {
-
         infectedCells++;
 
         SaveScoreToPref();
@@ -202,17 +206,15 @@ public class UI_Manager : MonoBehaviour
 
         AudioManager.instance.PlayWinSound();
 
-        Debug.Log("ORGAN IS INFECTED!!!");
+        yield return new WaitForSeconds(2f);
 
-        yield return new WaitForSeconds(1f);
-
-        Debug.Log("YOU WIN!!!");
-
-        yield return new WaitForSeconds(1f);
+        FindFirstObjectByType<Cuore>().HeartInfectionLevel = 0;
 
         SetMenuOff(WinPanel);
         SetMenuOff(gameUI);
         SetMenuActive(mainMenu);
+
+        Cursor.lockState = CursorLockMode.None;
 
         SceneManager.LoadScene(0);
 

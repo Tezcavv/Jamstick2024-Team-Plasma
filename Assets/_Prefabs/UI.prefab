@@ -57,6 +57,7 @@ MonoBehaviour:
   WinPanel: {fileID: 3748340056335771418}
   DeadTXT: {fileID: 8148322143376857209}
   HitTXT: {fileID: 2762384956066041945}
+  HitVFX: {fileID: 7911806337262115516, guid: fb387b5bb6b01254ab565b2cd449a208, type: 3}
   onPause:
     m_PersistentCalls:
       m_Calls: []
@@ -2554,7 +2555,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 50
   m_fontSizeMax: 60
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

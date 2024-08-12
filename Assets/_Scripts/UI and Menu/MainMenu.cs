@@ -9,23 +9,16 @@ public class MainMenu : MonoBehaviour
 {
     public static MainMenu instance;
 
-    public TMP_Text gameTitle;
     public TMP_Text infectedCellsText;
 
     private void Awake()
     {
         instance = this;
-        gameTitle.text = $"infectious";
     }
 
     void Start()
     {
         MainMenuInit();
-    }
-
-    void Update()
-    {
-
     }
 
     private void OnEnable()
@@ -35,6 +28,7 @@ public class MainMenu : MonoBehaviour
 
     private void MainMenuInit()
     {
+        
         AudioManager.instance.PlayBackgroundMusic();
 
         infectedCellsText.text = $"infected cells\n{UI_Manager.instance.InfectedCells}";

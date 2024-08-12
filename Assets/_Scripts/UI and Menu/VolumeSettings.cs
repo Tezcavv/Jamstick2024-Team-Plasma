@@ -33,8 +33,6 @@ public class VolumeSettings : MonoBehaviour
         musicSlider_main.onValueChanged.AddListener(SetMusicVolume);
         SFXSlider_main.onValueChanged.AddListener(SetSFXVolume);
 
-        
-
         //masterVolume = 1f;
         //musicVolume = musicSlider_pause.value;
         //SFXVolume = SFXSlider_pause.value;
@@ -60,7 +58,7 @@ public class VolumeSettings : MonoBehaviour
         musicSlider_pause.value = musicVolume;
         musicSlider_main.value = musicVolume;
 
-        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20 - 20);
+        VolumesMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20 - 15);
     }
 
     public void SetSFXVolume(float value)
@@ -72,13 +70,10 @@ public class VolumeSettings : MonoBehaviour
         VolumesMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
     }
 
-
     public void SetMasterVolume(float value)
     {
         VolumesMixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
     }
-
-   
 
     void OnDisable()
     {
@@ -86,6 +81,4 @@ public class VolumeSettings : MonoBehaviour
 
         AudioManager.instance.SaveVolumesToPref(volumes);
     }
-
-    
 }
